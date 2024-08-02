@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<a class="btn btn-primary mt-3" href="{{url('recipe.create')}}">Nouvelle recette</a>
+
+<div class="container">{% for recipe in recipes %}
+
+<div class="container p-5">
+
+<h3>{{recipe.name}}</h3>
+<h5>Auteur: {{recipe.auteur}}</h5>
+<h6>Durée de préparation : {{recipe.duration}}</h6>
+<p>Ingrédients : {{recipe.ingredients}}</p>
+<p>Description : {{recipe.description | nl2br }}</p>
+</div>
+<div class="container p-5 d-flex justify-content-evenly">
+<a href="{{url('recipe.show' , {id: recipe.id, slug: recipe.slug })}}">Voir : {{recipe.name}}</a>
+<a class="btn btn-warning" href="{{url('recipe.edit' , {id: recipe.id})}}">Modifier</a>
+<form action="{{path('recipe.remove', {id: recipe.id})}}" method="post">
+<input type="hidden" name="_method" value="Delete">
+<button class="btn btn-danger">Supprimer</button>
+</form>
+</div>
+ {% endfor %}
+</div>
+
+ 
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title "Recette : " ~ recipe.slug %}
+{% block body %}
+<div class="container">
+<h3>{{recipe.name}}</h3>
+<h5>Auteur: {{recipe.auteur}}</h5>
+<h6>Durée de préparation : {{recipe.duration}}</h6>
+<p>Ingrédients : {{recipe.ingredients}}</p>
+<p>Description : {{recipe.description}}</p>
+</div>
+
+{# {{slug}}  {{demo | raw}}   #}
+{# le filtre raw pour comprendre les balises html #}
+
+<br>
+{# affichage de deux éléments dans un seul élément twig #}
+{# {{ person.firstname  ~ ' ' ~ person.lastname}}   #}
+<br>
+{# y a pas mal de fonctions app (lire la doc sf) #}
+{# app.current_route permet d'afficher la route surlaquelle se retrouve ce fichier/cette vue #}
+{# {{app.current_route}}  #}
+
+{% endblock %}
